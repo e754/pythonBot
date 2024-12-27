@@ -23,14 +23,10 @@ def generate_content(text):
     )
     return result.text
 
-
 class Client(discord.Client):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.message_count = 0
-
-
-        
         self.last_message = None
 
     async def on_ready(self):
@@ -39,7 +35,6 @@ class Client(discord.Client):
     async def on_message(self, message):
         if message.author == self.user:
             return
-
         self.message_count += 1
 
         if self.message_count % 2 == 1:
@@ -55,40 +50,4 @@ intents.messages = True
 
 # client = discord.Client(heartbeat_timeout=5)
 client = Client(intents=intents)
-client.run('MTI4Mjc1MDUwMjI4MjcyNzUwNg.Giv1mf.8RxWyPAR_jwYh09bpRyzFPVo4Riv2SzUW32cXM')
-
-
-# import discord
-# import google.generativeai as genai
-
-# name='generate-num-3397'
-# model = genai.GenerativeModel(model_name=f'tunedModels/{name}')
-
-# from google.generativeai.types import HarmCategory, HarmBlockThreshold
-
-# def generateContent(text):
-
-#   result = model.generate_content(
-#   [f'You are a narrator of a gothic horror story, rephrase this: "{text}" '],
-#      safety_settings={
-#       HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
-#       HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
-#       HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
-#       HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT:HarmBlockThreshold.BLOCK_NONE,
-#       # HarmCategory.HARM_CATEGORY_UNSPECIFIED:HarmBlockThreshold.BLOCK_NONE,
-#     },
-#     generation_config=genai.types.GenerationConfig(
-#       temperature=0.5,
-#     ),
-#   )
-#   return result.text
-
-# class Client(discord.Client):
-#     async def on_ready(self):
-#         print("logged")
-
-# intents=discord.Intents.default()
-# intents.message_content = True
-
-# client = Client(intents=intents)
-# client.run('MTI4Mjc1MDUwMjI4MjcyNzUwNg.Giv1mf.8RxWyPAR_jwYh09bpRyzFPVo4Riv2SzUW32cXM')
+client.run('')
